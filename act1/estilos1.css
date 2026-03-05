@@ -16,12 +16,12 @@ a {
 }
 /* Los elementos "em" contenidos en #primero */
 #primero em {
- background: #FFFFCC;
+ background: #ffff8b;
  padding: .1em;
 }
 /* Todos los elementos "em" de clase "especial" en toda la pagina */
-.especial em {
- background: #FFCC99;
+.especial{
+ background: #ffc489;
  border: 1px solid #FF9900;
  padding: .1em;
 }
