@@ -1,2 +1,2 @@
-# Corte3
-Actividades del corte 3
+# Corte2
+Actividades del corte 2
