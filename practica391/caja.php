@@ -28,21 +28,21 @@ public function volumen(): float {
 /**
  * @return float
  */
-public function areaFrontal(): float {
+private function areaFrontal(): float {
     return $this->ancho * $this->alto;
 }
 
 /**
  * @return float
  */
-public function areaLateral(): float {
+private function areaLateral(): float {
     return $this->alto * $this->largo;
 }
 
 /**
  * @return float
  */
-public function areaSuperior(): float {
+private function areaSuperior(): float {
     return $this->ancho * $this->largo;
 }
 
@@ -136,7 +136,11 @@ public function cajaMasPequena(): Caja {
     /** Devuelve una representacion en cadena de la caja
      * @return string
      */
+
+  
 public function __toString(): string {
-        return "Caja: (Ancho: $this->ancho, Alto: $this->alto, Largo: $this->largo)";
+        return "Caja: (Ancho: {$this->ancho}, Alto: {$this->alto}, Largo: {$this->largo}) <br>
+        Volumen: {$this->volumen()}, Area Total: {$this->areaTotal()}";
     }
+       
 }
