@@ -28,35 +28,44 @@
 
 <?php
 require_once "fraccion.php";
-// 1. RECIBIR DATOS DEL FORMULARIO
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-$numerador1 = $_POST['numerador1'];
-$denominador1 = $_POST['denominador1'];
-$numerador2 = $_POST['numerador2'];
-$denominador2 = $_POST['denominador2'];
-$potencia = $_POST['potencia'];
+    $numerador1 = $_POST['numerador1'];
+    $denominador1 = $_POST['denominador1'];
+    $numerador2 = $_POST['numerador2'];
+    $denominador2 = $_POST['denominador2'];
+    $potencia = $_POST['potencia'];
 
-$fraccion1 = new Fraccion($numerador1, $denominador1);
-$fraccion2 = new Fraccion($numerador2, $denominador2);
+    // ❌ VALIDACIÓN DE ERROR
+    if ($denominador1 == 0 || $denominador2 == 0) {
 
+        echo "<div class='result-container'>
+                <h3 style='color:red;'>❌ Error</h3>
+                <div class='result-item'>
+                    No se pueden hacer fracciones con denominador 0
+                </div>
+              </div>";
 
+    } else {
 
-echo "<div class='result-container'>
-    <h3>Resultados</h3>
+        // ✅ SOLO SI TODO ESTÁ BIEN
+        $fraccion1 = new Fraccion($numerador1, $denominador1);
+        $fraccion2 = new Fraccion($numerador2, $denominador2);
 
-    <div class='result-item'>Suma: " . $fraccion1->sumar($fraccion2) . "</div>
-    <div class='result-item'>Resta: " . $fraccion1->restar($fraccion2) . "</div>
-    <div class='result-item'>Multiplicación: " . $fraccion1->multiplicar($fraccion2) . "</div>
-    <div class='result-item'>División: " . $fraccion1->dividir($fraccion2) . "</div>
-    <div class='result-item'>Potencia: " . $fraccion1->potencia($potencia) . "</div>
-     <div class='result-item'>Porcentaje: " . $fraccion1->fraccion_porcentaje($potencia) . "</div>
-</div>";
+        echo "<div class='result-container'>
+                <h3>✨ Resultados ✨</h3>
+
+                <div class='result-item'>Suma: " . $fraccion1->sumar($fraccion2) . "</div>
+                <div class='result-item'>Resta: " . $fraccion1->restar($fraccion2) . "</div>
+                <div class='result-item'>Multiplicación: " . $fraccion1->multiplicar($fraccion2) . "</div>
+                <div class='result-item'>División: " . $fraccion1->dividir($fraccion2) . "</div>
+                <div class='result-item'>Potencia: " . $fraccion1->potencia($potencia) . "</div>
+                <div class='result-item'>Porcentaje: " . $fraccion1->fraccion_porcentaje($potencia) . "</div>
+              </div>";
+    }
 }
-// 4. MOSTRAR RESULTADO
-
- 
+?>
 ?>
 </body>
 </html>
