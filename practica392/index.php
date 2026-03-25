@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
     <title>Practica de divisiones</title>
 </head>
 <body>
-    <form action="resultados.php" method="post">
+    <form action="index.php" method="post">
         <label for="numerador1">Numerador 1:</label>
         <input type="number" id="numerador1" name="numerador1" required><br><br>
         <label for="denominador1">Denominador 1:</label>
@@ -15,17 +16,41 @@
         <input type="number" id="numerador2" name="numerador2" required><br><br>
         <label for="denominador2">Denominador 2:</label>
         <input type="number" id="denominador2" name="denominador2" required><br><br>
-        <input type="submit" value="Calcular">
+        <label for="potencia">Potencia:</label>
+        <input type="number" id="potencia" name="potencia" required><br><br>
+        <input type="submit" value="calcular" name="operacion">
     </form>
 
-    <?php
-    // Incluir el archivo de pruebas para ejecutar las operaciones con fracciones
-    require_once 'fraccion.php';
+<?php
+require_once "fraccion.php";
+// 1. RECIBIR DATOS DEL FORMULARIO
 
-    // Crear dos fracciones con los valores ingresados en el formulario
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        
-    }
-    ?>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+$numerador1 = $_POST['numerador1'];
+$denominador1 = $_POST['denominador1'];
+$numerador2 = $_POST['numerador2'];
+$denominador2 = $_POST['denominador2'];
+$potencia = $_POST['potencia'];
+
+$fraccion1 = new fraccion($numerador1, $denominador1);
+$fraccion2 = new fraccion($numerador2, $denominador2);
+
+
+
+echo "<div class='result-container'>
+    <h3>Resultados</h3>
+
+    <div class='result-item'>Suma: " . $fraccion1->sumar($fraccion2) . "</div>
+    <div class='result-item'>Resta: " . $fraccion1->restar($fraccion2) . "</div>
+    <div class='result-item'>Multiplicación: " . $fraccion1->multiplicar($fraccion2) . "</div>
+    <div class='result-item'>División: " . $fraccion1->dividir($fraccion2) . "</div>
+    <div class='result-item'>Potencia: " . $fraccion1->potencia($potencia) . "</div>
+</div>";
+}
+// 4. MOSTRAR RESULTADO
+
+ 
+?>
 </body>
 </html>
