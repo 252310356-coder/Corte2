@@ -10,14 +10,19 @@
     <form action="index.php" method="post">
         <label for="numerador1">Numerador 1:</label>
         <input type="number" id="numerador1" name="numerador1" required><br><br>
+
         <label for="denominador1">Denominador 1:</label>
         <input type="number" id="denominador1" name="denominador1" required><br><br>
+
         <label for="numerador2">Numerador 2:</label>
         <input type="number" id="numerador2" name="numerador2" required><br><br>
+
         <label for="denominador2">Denominador 2:</label>
         <input type="number" id="denominador2" name="denominador2" required><br><br>
+
         <label for="potencia">Potencia:</label>
         <input type="number" id="potencia" name="potencia" required><br><br>
+
         <input type="submit" value="calcular" name="operacion">
     </form>
 
@@ -33,8 +38,8 @@ $numerador2 = $_POST['numerador2'];
 $denominador2 = $_POST['denominador2'];
 $potencia = $_POST['potencia'];
 
-$fraccion1 = new fraccion($numerador1, $denominador1);
-$fraccion2 = new fraccion($numerador2, $denominador2);
+$fraccion1 = new Fraccion($numerador1, $denominador1);
+$fraccion2 = new Fraccion($numerador2, $denominador2);
 
 
 
@@ -46,6 +51,7 @@ echo "<div class='result-container'>
     <div class='result-item'>Multiplicación: " . $fraccion1->multiplicar($fraccion2) . "</div>
     <div class='result-item'>División: " . $fraccion1->dividir($fraccion2) . "</div>
     <div class='result-item'>Potencia: " . $fraccion1->potencia($potencia) . "</div>
+     <div class='result-item'>Porcentaje: " . $fraccion1->fraccion_porcentaje($potencia) . "</div>
 </div>";
 }
 // 4. MOSTRAR RESULTADO
