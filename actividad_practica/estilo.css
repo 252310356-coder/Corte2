@@ -9,7 +9,7 @@ form, .result-box {
     background: white;
     padding: 20px;
     margin: 20px auto;
-    width: 320px; /* Un poco más ancho para evitar desbordes */
+    width: 320px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
