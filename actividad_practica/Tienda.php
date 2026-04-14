@@ -7,7 +7,7 @@ class Tienda {
  return $precio * 0.20;
  } elseif ($precio >= 500) {
  return $precio * 0.10;
- } else {Se ysa 
+ } else {
  return 0;
  }
  }

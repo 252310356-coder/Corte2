@@ -47,18 +47,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <select name="tipo_carga">
         <option value= 1 name="Normal">t= 2t + 5</option>
         <option value= 2 name="Constante">t= 5</option>
-        <option value= 3 name="Fuerte">t^2</option>
+        <option value= 3 name="Fuerte">t= t^2</option>
     </select>
  <button type="submit">Calcular Joules Consumidos</button>
  </form>
+
  <?php if ($resultado !== null): ?>
  <div class="result">
- <h3>Consumo Total: <?php echo number_format($resultado,
-4); ?> Joules</h3>
- <p>Cálculo basado en la integral definida de la carga del
-servidor.</p>
+ <h3>Consumo Total: 
+    <?php echo number_format ($resultado, 4); ?> Joules</h3>
+    <h3>Consumo en Kilovatio-hora: <?php echo number_format ($resultado * 2.7778 * 1e-7, 4); ?> kWh  </h3>
+    <?php echo "Tipo de carga seleccionada: " . ($_POST['tipo_carga'] == 1 ? "Normal (P(t) = 2t + 5)" : ($_POST['tipo_carga'] == 2 ? "Constante (P(t) = 5)" : "Fuerte (P(t) = t^2)")); ?>
+    <p>Cálculo basado en la integral definida de la carga del servidor.</p>
  </div>
  <?php endif; ?>
+
  <?php if ($error): ?>
  <div class="error"> Error: <?php echo $error; ?></div>
  <?php endif; ?>

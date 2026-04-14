@@ -27,7 +27,7 @@ positivo.");
  }
 
  /**
- * Modela la función de potencia P(t) = t^2 + 2t (Ejemplo de carga creciente)
+ * Modela la función de potencia P(t) = t^2 + 2t (Ejemplo de arga ccreciente)
  * En informática, esto representaría los Watts consumidos.
  */
 
@@ -41,7 +41,7 @@ positivo.");
  return pow($t, 2);
  }
     return 0; // Valor por defecto (no debería ocurrir)
-    }
+}
 
  public function calcularEnergiaTotal(): float {
  $h = ($this->fin - $this->inicio) / $this->pasos;
