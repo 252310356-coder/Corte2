@@ -39,6 +39,8 @@ positivo.");
  return 5;
  case 3: // Fuerte: P(t) = t^2
  return pow($t, 2);
+ case 4: // Formula original: P(t) = t^2 + 2t
+ return pow($t, 2) + 2 * $t;
  }
     return 0; // Valor por defecto (no debería ocurrir)
 }
@@ -54,5 +56,19 @@ positivo.");
  }
 
  return $suma * $h;
+    }
+
+    public function aumentoEnergia(): void {
+    $n_values = [10, 100, 1000];
+    foreach ($n_values as $n) {
+        $integrador = new IntegradorNumerico(
+            (float)$_POST['t_inicio'],
+            (float)$_POST['t_fin'],
+            $n,
+            (int) $_POST['tipo_carga']
+        );
+        $energia = $integrador->calcularEnergiaTotal();
+        echo "<tr> <td> $_POST[t_inicio] </td> <td> $_POST[t_fin] </td> <td> $n </td> <td> " . number_format($energia, 4) . " </td> </tr>";
+    }
     }
 }
