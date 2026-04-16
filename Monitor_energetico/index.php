@@ -30,9 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  <title>Cloud Energy Monitor</title>
  <link rel="stylesheet" href="css/style.css">
 </head>
+<audio id="miaudio" src="musica/idnyl.mp3" loop></audio>
+
+
 <body>
- <div class="container">
- <h1>Monitor de Energía (DataCenter)</h1>
+ <div class="container cam">
+ <h1>Monitor de Energía <br> (DataCenter)</h1>
  <form method="POST">
  <label>Tiempo Inicial (s):</label>
  <input type="number" name="t_inicio" step="0.1" required>
@@ -76,9 +79,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  </div>
  <?php endif; ?>
 
+ 
+
  <?php if ($error): ?>
  <div class="error"> Error: <?php echo $error; ?></div>
  <?php endif; ?>
  </div>
+ <script>
+  const audio = document.getElementById("miaudio");
+
+  
+  window.addEventListener("DOMContentLoaded", () => {
+    audio.play().catch(() => {
+      
+      console.log("Autoplay bloqueado. Esperando interacción del usuario...");
+      document.addEventListener("click", () => {
+        audio.play();
+      }, { once: true });
+    });
+  });
+
+  
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      audio.pause();
+    }
+  });
+
+  
+  window.addEventListener("beforeunload", () => {
+    audio.pause();
+  });
+</script>
 </body>
 </html>
