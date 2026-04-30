@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  <div class="result">
  <h3>Consumo Total: 
     <?php echo number_format ($resultado, 4); ?> Joules</h3>
-    <h3>Consumo en Kilovatio-hora: <?php echo number_format ($resultado * 2.7778 * 1e-7, 4); ?> kWh  </h3>
+    <h3>Consumo en Kilovatio-hora: <?php echo number_format ($resultado * 2.7778 * 1e-7, 7); ?> kWh  </h3>
     <?php echo "Tipo de carga seleccionada: " . ($_POST['tipo_carga'] == 1 ? "Normal (P(t) = 2t + 5)" : ($_POST['tipo_carga'] == 2 ? "Constante (P(t) = 5)" : ($_POST['tipo_carga'] == 3 ? "Fuerte (P(t) = t^2)" : "Potencia (P(t) = t^2 + 2t)")) ); ?>
     <p>Cálculo basado en la integral definida de la carga del servidor.</p>
  </div>

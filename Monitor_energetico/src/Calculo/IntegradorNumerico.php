@@ -12,10 +12,10 @@ class IntegradorNumerico {
 final.");
 
  }
- if ($n <= 0) {
+ if ($n <= 0 or $n >= 1000000) {
 
  throw new \InvalidArgumentException("La precisión (n) debe ser un número
-positivo.");
+positivo y menor a 1000000.");
 
  }
 
@@ -57,8 +57,6 @@ positivo.");
 
  return $suma * $h;
     }
-
-
     
     public function aumentoEnergia(): void {
     $n_values = [10, 100, 1000];
@@ -70,7 +68,7 @@ positivo.");
             $this->tipoCarga
         );
         $energia = $integrador->calcularEnergiaTotal();
-        echo "<tr> <td> $this->inicio </td> <td> $this->fin </td> <td> $n </td> <td> " . number_format($energia, 4) . " </td> </tr>";
+        echo "<tr> <td> $this->inicio </td> <td> $this->fin </td> <td> $n </td> <td> " . number_format($energia, 7) . " </td> </tr>";
     }
     }
 }
